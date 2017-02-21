@@ -20,39 +20,34 @@ class MakeHistograms
     public static void main (String [] args ) throws IOException
     {       
         // create an instance of the Class Histogram: 20 bins from 0.0 to 1.0
-        Histogram hist = new Histogram(20, 0.4, 0.9);      
-        Histogram gaussHist = new Histogram(50, -2, 2); //<<<TASK3>>>
-        Histogram dHist = new Histogram(50, 0, 150); //<<TASK4>>>
+        Histogram nearGaussHist = new Histogram(50, -2, 2); 
+        Histogram nextGaussHist = new Histogram(50, -2, 2); //<<TASK1.1>>
         
         
         screen.println( "Input the number of random numbers to generate");
         int trials = new Integer(keyboard.readLine()).intValue();
-        for (int i = 0; i < trials; i++) {
-            double value = randGen.nextDouble();
-            hist.fill(value);
-        }
-        
-        //For Gaussian Graph
-        for (int i=0;i<trials;i++) //<<<TASK3>>>
+        long startTime = System.nanoTime();
+        //For Near Gaussian Graph
+        for (int i=0;i<trials;i++) 
         {
-            double value = nearGauss(0,0.5);
-            gaussHist.fill(value);
+            //For Near Gauss
+            double value_near = nearGauss(0,0.5);
+            nearGaussHist.fill(value_near);
+            //For Next Gauss                                //<<TASK1.1>>
+            double value_next = randGen.nextGaussian()*0.5;
+            nextGaussHist.fill(value_next);
         }
-        
-        //For D graph
-        for(int i=0;i<trials;i++)  //<<<TASK4>>>
-        {
-            double value = (-15*Math.log(randGen.nextDouble()));
-            dHist.fill(value);
-        }
-        
         
         //Console and file print
-        hist.print();
-        hist.writeToDisk("test.csv"); //<<<TASK3>>>
-        gaussHist.print();              //<<<TASK3>>>
-        gaussHist.writeToDisk("gauss_test.csv");   //<<<TASK3>>>
-        dHist.writeToDisk("d_test.csv");
+        nearGaussHist.print();             
+        nearGaussHist.writeToDisk("neargauss_test.csv");   
+        nextGaussHist.print();                            //<<TASK1.1>>
+        nextGaussHist.writeToDisk("nextgauss_test.csv");  //<<TASK1.1>> 
+        
+        
+        //Execute time
+        long endTime = System.nanoTime();
+        System.out.println("Took "+(endTime - startTime) + " ns");
     }
 }
         
