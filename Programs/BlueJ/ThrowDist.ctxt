@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.params=x
+comment0.target=double\ p(double)
+comment1.params=nsteps\ xmin\ xmax
+comment1.target=double\ Integrate(int,\ double,\ double)
+comment2.params=nsteps\ xmin\ xmax
+comment2.target=double\ throwValueInt(int,\ double,\ double)
+comment3.params=xmin\ xmax\ ymin\ ymax
+comment3.target=double\ throwValueHitMiss(double,\ double,\ double,\ double)
+comment4.params=args
+comment4.target=void\ main(java.lang.String[])
+numComments=5
