@@ -20,10 +20,10 @@
 		\end{center}
 	\end{abstract}
 %Main Body of text in 2Column format
-\begin{multicols}{2}
+%\begin{multicols}{2}
 \section{Task 1}
 This first section required the near-Gaussian graph generated from last week to be re-imported into the code for this week so it could be compared with the expected values, and a second method for creating a Gaussian histogram which used the \textbf{java.util.Random} class to generate random Gaussian values. This was done by creating another Histogram instance with identical parameters on line 24 and adding into the for-loop used for filling the histograms a separate section for the second histogram which had to scale the randomly generated Gaussian value by $0.5$ as the default values produced have a standard deviation of 1 and was done on lines 37 and 38 and then printed to console and to a .csv file with lines 44 and 45.
-\begin{table*}[t]
+\begin{table}[b]
 	\hrule
 	\begin{lstlisting}
 24 Histogram nextGaussHist = new Histogram(50, -2, 2); 
@@ -33,8 +33,13 @@ This first section required the near-Gaussian graph generated from last week to 
 44 nextGaussHist.print();                            
 45 nextGaussHist.writeToDisk("nextgauss_test.csv");
 	\end{lstlisting}
+	\caption{This table contains the code added to MakeHistogram.java to complete Task1.}
 	\hrule
-\end{table*}
-The output data was then put into the same spreadsheet, and had their graphs overlayed upon the same axis together with the expected 
-\end{multicols}
+\end{table}
+The output data was then put into the same spreadsheet, and had their graphs overlayed upon the same axis together with the expected values to compare the shapes of graphs. \\ \indent Both of these generated graphs then had their bins compared to the expected values by doing a $\chi^2$ calculation using:
+\begin{equation}
+\chi^2 = \sum_{i=1}^{n} \dfrac{[D(x_i) - E(x_i)]^2}{\delta_{i}^{2}}
+\end{equation} 
+where \textit{i} is the bin number \textit{$x_i$} \textit{D()} \textit{E()} \textit{$\delta$}
+%\end{multicols}
 \end{document}
